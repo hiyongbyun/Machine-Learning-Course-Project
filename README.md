@@ -57,6 +57,40 @@ modelRF <- randomForest(classe~., data=wleTraining)
 ```{r cache=TRUE}
 confusionMatrix(wleTesting$classe,predict(modelRF,wleTesting))
 ```
+```
+Confusion Matrix and Statistics
+ 
+           Reference
+Prediction    A    B    C    D    E
+          A 1673    0    0    0    1
+          B    3 1135    1    0    0
+          C    0    6 1019    1    0
+          D    0    0   15  949    0
+          E    0    0    1    3 1078
+ 
+Overall Statistics
+                                           
+                Accuracy : 0.9947          
+                  95% CI : (0.9925, 0.9964)
+     No Information Rate : 0.2848          
+     P-Value [Acc > NIR] : < 2.2e-16       
+                                           
+                   Kappa : 0.9933          
+                                           
+Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+ 
+                      Class: A Class: B Class: C Class: D Class: E
+Sensitivity            0.9982   0.9947   0.9836   0.9958   0.9991
+Specificity            0.9998   0.9992   0.9986   0.9970   0.9992
+Pos Pred Value         0.9994   0.9965   0.9932   0.9844   0.9963
+Neg Pred Value         0.9993   0.9987   0.9965   0.9992   0.9998
+Prevalence             0.2848   0.1939   0.1760   0.1619   0.1833
+Detection Rate         0.2843   0.1929   0.1732   0.1613   0.1832
+Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
+Balanced Accuracy      0.9990   0.9969   0.9911   0.9964   0.9991
+```
 
 The model using the random forest algorithm was able to predict the testing dataset with 99.47% accuracy and near zero p-value. Out of sample error was calculated to be 0.53% (31 incorrect predictions out of 5885 observations).
 
